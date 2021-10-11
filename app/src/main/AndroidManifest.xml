@@ -10,14 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment3">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".GameUI.GameScreen"
+            android:exported="true" />
+        <activity
+            android:name=".GameUI.OptionsScreen"
+            android:exported="true" />
+        <activity
+            android:name=".GameUI.HelpScreen"
+            android:exported="true" />
+        <activity
+            android:name=".GameUI.MainMenu"
+            android:exported="true" />
+        <activity
+            android:name=".GameUI.WelcomeScreen"
+            android:exported="true" />
     </application>
 
 </manifest>
