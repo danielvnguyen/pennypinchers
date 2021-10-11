@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Assignment 3</string>
+    <string name="mineseeker">MineSeeker</string>
+    <string name="play">PLAY</string>
+    <string name="options">OPTIONS</string>
+    <string name="help">HELP</string>
+    <string name="header_for_main_menu">Header for Main Menu</string>
+    <string name="main_menu_graphic">Main Menu Graphic</string>
 </resources>
