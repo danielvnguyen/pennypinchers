@@ -8,21 +8,33 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Assignment3">
+        android:theme="@style/Theme.Assignment3"
+        >
+
         <activity
             android:name=".GameUI.GameScreen"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".GameUI.OptionsScreen"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".GameUI.HelpScreen"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".GameUI.MainMenu"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
             android:name=".GameUI.WelcomeScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="landscape"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
