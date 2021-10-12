@@ -6,4 +6,10 @@
     <string name="help">HELP</string>
     <string name="header_for_main_menu">Header for Main Menu</string>
     <string name="main_menu_graphic">Main Menu Graphic</string>
+    <string name="about_minesweeper_header">About MineSweeper</string>
+    <string name="about_minesweeper">MineSweeper is a game revolved around finding the mines.</string>
+    <string name="creators_header">About The Creators</string>
+    <string name="creators_info">Created by Zaid Arshad and Daniel Nguyen for CMPT 276.</string>
+    <string name="resources_header">Resources</string>
+    <string name="resources_info">Images and any other citations here.</string>
 </resources>

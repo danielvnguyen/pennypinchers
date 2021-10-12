@@ -1,19 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".GameUI.HelpScreen">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="Help Screen"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/mainMenuHeader"
+        android:layout_width="707dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/header_for_main_menu"
+        android:scaleX="25"
+        android:scaleY="1.7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/editbox_dropdown_dark_frame" />
+
+    <TextView
+        android:id="@+id/helpTitle"
+        android:layout_width="166dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:scaleY="1"
+        android:text="@string/help"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/gameInfoHeader"
+            android:layout_width="202dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/menuPink"
+            android:text="@string/about_minesweeper_header"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/gameInfo"
+            android:layout_width="547dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/about_minesweeper"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/creatorsHeader"
+            android:layout_width="190dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/menuPink"
+            android:text="@string/creators_header"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/creatorsInfo"
+            android:layout_width="547dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/creators_info"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/resourcesHeader"
+            android:layout_width="106dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/menuPink"
+            android:text="@string/resources_header"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/resourcesInfo"
+            android:layout_width="547dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/resources_info"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
