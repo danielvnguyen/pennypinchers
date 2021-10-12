@@ -12,4 +12,5 @@
     <string name="creators_info">Created by Zaid Arshad and Daniel Nguyen for CMPT 276.</string>
     <string name="resources_header">Resources</string>
     <string name="resources_info">Images and any other citations here.</string>
+    <string name="authors">Daniel Nguyen - Zaid Arshad</string>
 </resources>

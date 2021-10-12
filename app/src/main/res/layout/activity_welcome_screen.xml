@@ -7,7 +7,7 @@
     tools:context=".GameUI.WelcomeScreen">
 
   <TextView
-      android:id="@+id/mineSeekerTitle"
+      android:id="@+id/tvMineSeekerTitle"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:fontFamily="sans-serif-smallcaps"
@@ -21,14 +21,38 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.25" />
 
+  <TextView
+      android:id="@+id/tvAuthors"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/authors"
+      android:textSize="20sp"
+      android:textColor="@color/menuPink"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/pbLoading"
+      app:layout_constraintVertical_bias="0.25" />
+
   <ProgressBar
+      android:id="@+id/pbLoading"
       android:layout_width="100dp"
       android:layout_height="100dp"
       android:theme="@style/Theme.Assignment3"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/mineSeekerTitle"
+      app:layout_constraintTop_toBottomOf="@+id/tvMineSeekerTitle"
       app:layout_constraintVertical_bias="0.13" />
+
+  <Button
+      android:id="@+id/btnSkip"
+      android:backgroundTint="@color/menuPink"
+      android:layout_width="75dp"
+      android:layout_height="75dp"
+      android:background="@drawable/ic_baseline_arrow_forward_24"
+      android:layout_margin="5dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
