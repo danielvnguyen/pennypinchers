@@ -10,23 +10,25 @@
       android:id="@+id/mineSeekerTitle"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="25dp"
       android:fontFamily="sans-serif-smallcaps"
       android:text="@string/mineSeeker"
       android:textColor="@color/menuPink"
       android:textSize="70sp"
       android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.25" />
 
   <ProgressBar
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
       android:theme="@style/Theme.Assignment3"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/mineSeekerTitle" />
+      app:layout_constraintTop_toBottomOf="@+id/mineSeekerTitle"
+      app:layout_constraintVertical_bias="0.13" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
