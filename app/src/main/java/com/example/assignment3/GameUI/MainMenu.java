@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assignment3.R;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -42,5 +43,14 @@ public class MainMenu extends AppCompatActivity {
             Intent intent = HelpScreen.makeIntent(this);
             startActivity(intent);
         });
+    }
+
+    /**
+     * Creates the intent to start this activity
+     * @param context Context of the current activity
+     * @return The intent to start this activity
+     */
+    public static Intent makeIntent(Context context) {
+        return new Intent(context, MainMenu.class);
     }
 }

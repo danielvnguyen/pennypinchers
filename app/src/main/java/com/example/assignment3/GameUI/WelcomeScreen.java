@@ -40,8 +40,7 @@ public class WelcomeScreen extends AppCompatActivity {
 
     /** Starts the main menu activity */
     private void startMainMenu() {
-        Intent intent = new Intent(this, MainMenu.class);
-        startActivity(intent);
+        startActivity(MainMenu.makeIntent(this));
         finish();
     }
 
