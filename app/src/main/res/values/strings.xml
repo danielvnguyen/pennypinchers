@@ -13,4 +13,15 @@
     <string name="resources_header">Resources</string>
     <string name="resources_info">Images and any other citations here.</string>
     <string name="authors">Daniel Nguyen - Zaid Arshad</string>
+    <string name="board_size">Board Size</string>
+    <string name="header_for_options">header for options</string>
+    <string name="_4_x_6">4 x 6</string>
+    <string name="_5_x_10">5 x 10</string>
+    <string name="_6_x_15">6 x 15</string>
+    <string name="mines">Mines</string>
+    <string name="_6">6</string>
+    <string name="_10">10</string>
+    <string name="_15">15</string>
+    <string name="_20">20</string>
+    <string name="erase_times_played">Erase Times Played</string>
 </resources>
