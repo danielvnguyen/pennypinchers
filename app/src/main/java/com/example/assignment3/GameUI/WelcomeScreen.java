@@ -17,6 +17,9 @@ import android.widget.TextView;
  */
 public class WelcomeScreen extends AppCompatActivity {
 
+    // Stops the handler from starting opening the activity again
+    private Boolean screenEnded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +43,11 @@ public class WelcomeScreen extends AppCompatActivity {
 
     /** Starts the main menu activity */
     private void startMainMenu() {
-        startActivity(MainMenu.makeIntent(this));
-        finish();
+        if (!screenEnded) {
+            screenEnded = true;
+            startActivity(MainMenu.makeIntent(this));
+            finish();
+        }
     }
 
     /** Fades in all views on the activity_welcome_screen except button */
