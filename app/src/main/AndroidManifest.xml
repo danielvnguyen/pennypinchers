@@ -12,27 +12,27 @@
         >
 
         <activity
-            android:name=".GameUI.GameScreen"
+            android:name=".PennyPincher.Activities.GameScreen"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".GameUI.OptionsScreen"
+            android:name=".PennyPincher.Activities.OptionsScreen"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".GameUI.HelpScreen"
+            android:name=".PennyPincher.Activities.HelpScreen"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".GameUI.MainMenu"
+            android:name=".PennyPincher.Activities.MainMenu"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".GameUI.WelcomeScreen"
+            android:name=".PennyPincher.Activities.WelcomeScreen"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape"
             android:exported="true">

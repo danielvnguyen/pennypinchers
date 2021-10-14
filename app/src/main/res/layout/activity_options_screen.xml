@@ -4,16 +4,166 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".GameUI.OptionsScreen">
+    tools:context=".PennyPincher.Activities.OptionsScreen">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="Options Screen"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/mainMenuHeader"
+        android:layout_width="707dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        android:scaleX="25"
+        android:scaleY="1.7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/editbox_dropdown_dark_frame"
+        android:contentDescription="@string/header_for_options" />
+
+    <TextView
+        android:id="@+id/optionsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/options"
+        android:textColor="#FFFFFF"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+
+    <TextView
+        android:id="@+id/tvBoardSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@color/menuPink"
+        android:paddingHorizontal="10dp"
+        android:text="@string/board_size"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionsTitle"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupBoardSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBoardSize"
+        app:layout_constraintVertical_bias="0.17000002">
+
+        <RadioButton
+            android:id="@+id/radio4x6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menuPink"
+            android:text="@string/_4_x_6" />
+
+        <RadioButton
+            android:id="@+id/radio5x10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menuPink"
+            android:text="@string/_5_x_10" />
+
+        <RadioButton
+            android:id="@+id/radio6x15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menuPink"
+            android:text="@string/_6_x_15" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvAmountMines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/menuPink"
+        android:paddingHorizontal="40dp"
+        android:text="@string/mines"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvBoardSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/tvBoardSize" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupMines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmountMines"
+        app:layout_constraintVertical_bias="0.24000001">
+
+        <RadioButton
+            android:id="@+id/radio6Mines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menuPink"
+            android:text="@string/_6" />
+
+        <RadioButton
+            android:id="@+id/radio10Mines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menuPink"
+            android:text="@string/_10" />
+
+        <RadioButton
+            android:id="@+id/radio15Mines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menuPink"
+            android:text="@string/_15" />
+
+        <RadioButton
+            android:id="@+id/radio20Mines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/menuPink"
+            android:text="@string/_20" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnEraseTimesPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/warningRed"
+        android:paddingHorizontal="10dp"
+        android:text="@string/erase_times_played"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
