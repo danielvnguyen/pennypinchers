@@ -7,7 +7,7 @@
     <string name="header_for_main_menu">Header for Main Menu</string>
     <string name="main_menu_graphic">Main Menu Graphic</string>
     <string name="about_minesweeper_header">About PennyPincher</string>
-    <string name="about_minesweeper">PennyPincher is a game revolved around finding the hidden coins. <br/>
+    <string name="about_minesweeper">PennyPincher is a game revolved around finding the hidden coins.<br/>
     You must find all of the hidden coins within the money bags using as little scans as you can!
     Pressing on a money bag with no coin uses up a scan, which helps you find the coin
     in each row and/or column. You can also use a scan on a coin you found. Good luck!</string>
@@ -15,7 +15,9 @@
     <string name="creators_info">Created by Zaid Arshad and Daniel Nguyen for CMPT 276.</string>
     <string name="resources_header">Resources</string>
     <string name="resources_info">https://www.cleanpng.com/png-canada-penny-debate-in-the-united-states-coin-cent-3490295/
-    <br/> https://pnghut.com/png/R2qRTuF1Cz/money-bag-united-states-dollar-image-transparent-png <br/>pinterest.ca/pin/408349891195209253/</string>
+        <br/> https://pnghut.com/png/R2qRTuF1Cz/money-bag-united-states-dollar-image-transparent-png
+        <br/> pinterest.ca/pin/408349891195209253/
+        <br/>https://www.pngitem.com/pimgs/m/121-1219503_pinching-hand-emoji-png-transparent-png.png</string>
     <string name="authors">Daniel Nguyen - Zaid Arshad</string>
     <string name="board_size">Board Size</string>
     <string name="header_for_options">header for options</string>
