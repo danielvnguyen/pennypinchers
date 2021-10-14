@@ -52,7 +52,7 @@
             android:layout_height="27dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
-            android:background="@color/menuPink"
+            android:background="@color/brownColour"
             android:text="@string/about_minesweeper_header"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -62,7 +62,7 @@
 
         <TextView
             android:id="@+id/gameInfo"
-            android:layout_width="696dp"
+            android:layout_width="616dp"
             android:layout_height="120dp"
             android:layout_marginStart="16dp"
             android:background="@color/white"
@@ -75,7 +75,7 @@
             android:layout_height="27dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:background="@color/menuPink"
+            android:background="@color/brownColour"
             android:text="@string/creators_header"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -98,7 +98,7 @@
             android:layout_height="27dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:background="@color/menuPink"
+            android:background="@color/brownColour"
             android:text="@string/resources_header"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -109,12 +109,12 @@
 
         <TextView
             android:id="@+id/resourcesInfo"
-            android:layout_width="699dp"
-            android:layout_height="70dp"
+            android:layout_width="652dp"
+            android:layout_height="75dp"
             android:layout_marginStart="16dp"
             android:background="@color/white"
             android:text="@string/resources_info"
-            android:textSize="16sp" />
+            android:textSize="15.5sp" />
 
     </LinearLayout>
 
