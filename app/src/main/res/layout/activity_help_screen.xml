@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/money_background"
     tools:context=".GameUI.HelpScreen">
 
     <ImageView
@@ -62,9 +62,10 @@
 
         <TextView
             android:id="@+id/gameInfo"
-            android:layout_width="547dp"
-            android:layout_height="70dp"
+            android:layout_width="696dp"
+            android:layout_height="120dp"
             android:layout_marginStart="16dp"
+            android:background="@color/white"
             android:text="@string/about_minesweeper"
             android:textSize="20sp" />
 
@@ -85,8 +86,9 @@
         <TextView
             android:id="@+id/creatorsInfo"
             android:layout_width="547dp"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:background="@color/white"
             android:text="@string/creators_info"
             android:textSize="20sp" />
 
@@ -104,13 +106,15 @@
             android:textStyle="bold"
             tools:ignore="TextContrastCheck" />
 
+
         <TextView
             android:id="@+id/resourcesInfo"
-            android:layout_width="547dp"
+            android:layout_width="699dp"
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
+            android:background="@color/white"
             android:text="@string/resources_info"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 

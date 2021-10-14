@@ -1,15 +1,31 @@
 <resources>
     <string name="app_name">Assignment 3</string>
-    <string name="mineSeeker">MineSeeker</string>
+    <string name="pennyPincher">PennyPincher</string>
     <string name="play">PLAY</string>
     <string name="options">OPTIONS</string>
-    <string name="help">HELP</string>
+    <string name="help">Help</string>
     <string name="header_for_main_menu">Header for Main Menu</string>
     <string name="main_menu_graphic">Main Menu Graphic</string>
-    <string name="about_minesweeper_header">About MineSweeper</string>
-    <string name="about_minesweeper">MineSweeper is a game revolved around finding the mines.</string>
+    <string name="about_minesweeper_header">About PennyPincher</string>
+    <string name="about_minesweeper">PennyPincher is a game revolved around finding the hidden coins. <br/>
+    You must find all of the hidden coins within the money bags using as little scans as you can!
+    Pressing on a money bag with no coin uses up a scan, which helps you find the coin
+    in each row and/or column. You can also use a scan on a coin you found. Good luck!</string>
     <string name="creators_header">About The Creators</string>
     <string name="creators_info">Created by Zaid Arshad and Daniel Nguyen for CMPT 276.</string>
     <string name="resources_header">Resources</string>
-    <string name="resources_info">Images and any other citations here.</string>
+    <string name="resources_info">https://www.cleanpng.com/png-canada-penny-debate-in-the-united-states-coin-cent-3490295/
+    <br/> https://pnghut.com/png/R2qRTuF1Cz/money-bag-united-states-dollar-image-transparent-png <br/>pinterest.ca/pin/408349891195209253/</string>
+    <string name="authors">Daniel Nguyen - Zaid Arshad</string>
+    <string name="board_size">Board Size</string>
+    <string name="header_for_options">header for options</string>
+    <string name="_4_x_6">4 x 6</string>
+    <string name="_5_x_10">5 x 10</string>
+    <string name="_6_x_15">6 x 15</string>
+    <string name="mines">Mines</string>
+    <string name="_6">6</string>
+    <string name="_10">10</string>
+    <string name="_15">15</string>
+    <string name="_20">20</string>
+    <string name="erase_times_played">Erase Times Played</string>
 </resources>
