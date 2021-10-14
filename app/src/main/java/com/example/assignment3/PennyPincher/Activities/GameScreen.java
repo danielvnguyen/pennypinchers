@@ -1,4 +1,4 @@
-package com.example.assignment3.GameUI;
+package com.example.assignment3.PennyPincher.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

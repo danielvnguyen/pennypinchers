@@ -1,4 +1,4 @@
-package com.example.assignment3.GameUI;
+package com.example.assignment3.PennyPincher.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,8 @@ import com.example.assignment3.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class OptionsScreen extends AppCompatActivity {

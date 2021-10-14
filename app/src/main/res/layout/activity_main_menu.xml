@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameUI.MainMenu">
+    tools:context=".PennyPincher.Activities.MainMenu">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -68,7 +68,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-smallcaps"
         android:scaleY="1"
-        android:text="@string/mineSeeker"
+        android:text="@string/pennyPincher"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"

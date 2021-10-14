@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".GameUI.WelcomeScreen">
+    tools:context=".PennyPincher.Activities.WelcomeScreen">
 
   <TextView
       android:id="@+id/tvMineSeekerTitle"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:fontFamily="sans-serif-smallcaps"
-      android:text="@string/mineSeeker"
+      android:text="@string/pennyPincher"
       android:textColor="@color/menuPink"
       android:textSize="70sp"
       android:textStyle="bold"
