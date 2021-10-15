@@ -82,21 +82,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="@color/menuPink"
-            android:text="@string/_4_x_6" />
+            android:text="@string/_6_x_4" />
 
         <RadioButton
             android:id="@+id/radio5x10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="@color/menuPink"
-            android:text="@string/_5_x_10" />
+            android:text="@string/_10_x_5" />
 
         <RadioButton
             android:id="@+id/radio6x15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="@color/menuPink"
-            android:text="@string/_6_x_15" />
+            android:text="@string/_15_x_6" />
 
     </RadioGroup>
 

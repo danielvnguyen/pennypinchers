@@ -12,13 +12,13 @@ public class BoardOptions {
     }
 
     private BoardOptions() {
-        setBoardOptions(4, 6, 6);
+        setDefaultBoard();
     }
 
-    private void setBoardOptions(Integer boardWidth, Integer boardHeight, Integer numOfMines) {
-        this.boardWidth = boardWidth;
-        this.boardHeight = boardHeight;
-        this.numOfMines = numOfMines;
+    private void setDefaultBoard() {
+        this.boardWidth = 6;
+        this.boardHeight = 4;
+        this.numOfMines = 6;
     }
 
     public void setBoardSize(Integer boardWidth, Integer boardHeight) {

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.assignment3.GameModel.BoardOptions;
 import com.example.assignment3.R;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +13,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 /**
  * Screen that allows user to change the number of mines and the size of the game board
@@ -26,8 +22,8 @@ public class OptionsScreen extends AppCompatActivity {
     private BoardOptions boardOptions;
     private static final String SHARED_PREFS = "PENNY_PINCHER_SHARED_PREFERENCES";
     private final int[] MINE_AMOUNTS = new int[]{6, 10, 15, 20};
-    private final int[] BOARD_WIDTHS = new int[]{4, 5, 6};
-    private final int[] BOARD_HEIGHTS = new int[]{6, 10, 15};
+    private final int[] BOARD_HEIGHTS = new int[]{4, 5, 6};
+    private final int[] BOARD_WIDTHS = new int[]{6, 10, 15};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +51,11 @@ public class OptionsScreen extends AppCompatActivity {
 
         // Show saved board sizes
         switch (boardOptions.getBoardWidth()) {
-            case 5: {
+            case 10: {
                 radioButtonList[1].toggle();
                 break;
             }
-            case 6: {
+            case 15: {
                 radioButtonList[2].toggle();
                 break;
             }
@@ -73,8 +69,8 @@ public class OptionsScreen extends AppCompatActivity {
         for (int i = 0; i < radioButtonList.length; i++) {
             int index = i;
             radioButtonList[i].setOnClickListener((v) -> {
-                Integer width = BOARD_WIDTHS[index];
                 Integer height = BOARD_HEIGHTS[index];
+                Integer width = BOARD_WIDTHS[index];
                 boardOptions.setBoardSize(width, height);
                 Log.d("Options", width + " x " + height +" Sized Board");
             });

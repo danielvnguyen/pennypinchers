@@ -21,9 +21,9 @@
     <string name="authors">Daniel Nguyen - Zaid Arshad</string>
     <string name="board_size">Board Size</string>
     <string name="header_for_options">header for options</string>
-    <string name="_4_x_6">4 x 6</string>
-    <string name="_5_x_10">5 x 10</string>
-    <string name="_6_x_15">6 x 15</string>
+    <string name="_6_x_4">6 x 4</string>
+    <string name="_10_x_5">10 x 5</string>
+    <string name="_15_x_6">15 x 6</string>
     <string name="mines">Mines</string>
     <string name="_6">6</string>
     <string name="_10">10</string>
@@ -33,4 +33,6 @@
     <string name="times_played_shared_pref">TIMES_PLAYED_SHARED_PREFERENCES</string>
     <string name="_50">50</string>
     <string name="times_played">Times Played</string>
+    <string name="scans_used_0">Scans used: 0</string>
+    <string name="found_1_of_8_pennies">Found 1 of 8 Pennies</string>
 </resources>
