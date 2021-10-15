@@ -4,32 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PennyPincher.Activities.OptionsScreen">
+    tools:context=".PennyPincher.Activities.OptionsScreen"
+    android:background="@drawable/money_background"
+    >
 
     <ImageView
-        android:id="@+id/mainMenuHeader"
-        android:layout_width="707dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="16dp"
-        android:scaleX="25"
-        android:scaleY="1.7"
+        android:id="@+id/optionsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:alpha="0.7"
+        android:background="@color/mainTheme"
+        android:contentDescription="@string/header_for_main_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/editbox_dropdown_dark_frame"
-        android:contentDescription="@string/header_for_options" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/optionsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/options"
         android:textColor="@color/white"
         android:textSize="70sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,147 +47,181 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.66"/>
 
-
-    <TextView
-        android:id="@+id/tvBoardSize"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:background="@color/fadedWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:background="@color/mainTheme"
-        android:paddingHorizontal="10dp"
-        android:text="@string/board_size"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionsTitle"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintTop_toBottomOf="@+id/optionsHeader"
+        app:layout_constraintVertical_bias="0.25">
 
-    <RadioGroup
-        android:id="@+id/radioGroupBoardSize"
+        <TextView
+            android:id="@+id/tvBoardSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/mainTheme"
+            android:paddingHorizontal="10dp"
+            android:text="@string/board_size"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupBoardSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingBottom="25dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.43"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBoardSize">
+
+            <RadioButton
+                android:id="@+id/radio4x6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainTheme"
+                android:text="@string/_6_x_4" />
+
+            <RadioButton
+                android:id="@+id/radio5x10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainTheme"
+                android:text="@string/_10_x_5" />
+
+            <RadioButton
+                android:id="@+id/radio6x15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainTheme"
+                android:text="@string/_15_x_6" />
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:background="@color/fadedWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBoardSize"
-        app:layout_constraintVertical_bias="0.17000002">
-
-        <RadioButton
-            android:id="@+id/radio4x6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/mainTheme"
-            android:text="@string/_6_x_4" />
-
-        <RadioButton
-            android:id="@+id/radio5x10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/mainTheme"
-            android:text="@string/_10_x_5" />
-
-        <RadioButton
-            android:id="@+id/radio6x15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/mainTheme"
-            android:text="@string/_15_x_6" />
-
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/tvAmountMines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/mainTheme"
-        android:paddingHorizontal="40dp"
-        android:text="@string/mines"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tvBoardSize"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline1"
-        app:layout_constraintTop_toTopOf="@+id/tvBoardSize" />
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout2">
 
-    <RadioGroup
-        android:id="@+id/radioGroupMines"
+        <TextView
+            android:id="@+id/tvAmountMines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/mainTheme"
+            android:paddingHorizontal="40dp"
+            android:text="@string/mines"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupMines"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupMines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <RadioButton
+                android:id="@+id/radio6Mines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainTheme"
+                android:text="@string/_6" />
+
+            <RadioButton
+                android:id="@+id/radio10Mines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainTheme"
+                android:text="@string/_10" />
+
+            <RadioButton
+                android:id="@+id/radio15Mines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainTheme"
+                android:text="@string/_15" />
+
+            <RadioButton
+                android:id="@+id/radio20Mines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/mainTheme"
+                android:text="@string/_20" />
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:background="@color/fadedWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/tvAmountMines"
-        app:layout_constraintVertical_bias="0.24000001">
-
-        <RadioButton
-            android:id="@+id/radio6Mines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/mainTheme"
-            android:text="@string/_6" />
-
-        <RadioButton
-            android:id="@+id/radio10Mines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/mainTheme"
-            android:text="@string/_10" />
-
-        <RadioButton
-            android:id="@+id/radio15Mines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/mainTheme"
-            android:text="@string/_15" />
-
-        <RadioButton
-            android:id="@+id/radio20Mines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/mainTheme"
-            android:text="@string/_20" />
-
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/tvTimesPlayedTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/mainTheme"
-        android:paddingHorizontal="10dp"
-        android:text="@string/times_played"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tvAmountMines"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/tvAmountMines" />
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout3">
 
-    <TextView
-        android:id="@+id/tvTimesPlayed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
-        android:text="@string/_50"
-        android:textAlignment="center"
-        android:textColor="@color/mainTheme"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnEraseTimesPlayed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tvTimesPlayedTitle" />
+        <TextView
+            android:id="@+id/tvTimesPlayedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/mainTheme"
+            android:paddingHorizontal="10dp"
+            android:text="@string/times_played"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTimesPlayed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:text="@string/_50"
+            android:textAlignment="center"
+            android:textColor="@color/mainTheme"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimesPlayedTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Button
         android:id="@+id/btnEraseTimesPlayed"

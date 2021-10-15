@@ -62,30 +62,26 @@
 
     <ImageView
         android:id="@+id/mainMenuHeader"
-        android:layout_width="707dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="16dp"
-        android:scaleX="25"
-        android:scaleY="1.7"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:alpha="0.7"
+        android:background="@color/mainTheme"
+        android:contentDescription="@string/header_for_main_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/editbox_dropdown_dark_frame"
-        android:contentDescription="@string/header_for_main_menu" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/helpTitle"
-        android:layout_width="437dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-smallcaps"
-        android:scaleY="1"
         android:text="@string/pennyPincher"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="70sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/mainMenuHeader"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
