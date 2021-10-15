@@ -22,6 +22,7 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        addTimesPlayed();
         setUpBoardOptions();
         populateButtons();
     }
@@ -31,8 +32,18 @@ public class GameScreen extends AppCompatActivity {
         for (int row = 0; row < tableHeight; row++) {
             TableRow tableRow = new TableRow(this);
             table.addView(tableRow);
+            tableRow.setLayoutParams(new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    1.0f
+            ));
             for (int col = 0; col < tableWidth; col++) {
                 Button button = new Button(this);
+                button.setLayoutParams(new TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        1.0f
+                ));
                 tableRow.addView(button);
             }
         }
@@ -42,6 +53,10 @@ public class GameScreen extends AppCompatActivity {
         BoardOptions boardOptions = BoardOptions.getInstance();
         tableWidth = boardOptions.getBoardWidth();
         tableHeight = boardOptions.getBoardHeight();
+    }
+
+    private void addTimesPlayed() {
+        OptionsScreen.setTimesPlayed(this, OptionsScreen.getTimesPlayed(this)+1);
     }
 
 

@@ -127,12 +127,21 @@ public class OptionsScreen extends AppCompatActivity {
         // Shared prefs to set the saved number of times played to 0
         btnEraseTimesPlayed.setOnClickListener((v)-> {
             TextView tvTimesPlayed = findViewById(R.id.tvTimesPlayed);
-            SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.times_played_shared_pref), 0);
-            editor.apply();
+            setTimesPlayed(this, 0);
             tvTimesPlayed.setText("0");
         });
+    }
+
+    public static void setTimesPlayed(Context context, Integer timesPlayed) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(context.getString(R.string.times_played_shared_pref), timesPlayed);
+        editor.apply();
+    }
+
+    public static Integer getTimesPlayed(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        return sharedPreferences.getInt(context.getString(R.string.times_played_shared_pref), 0);
     }
 
     /**
@@ -140,8 +149,7 @@ public class OptionsScreen extends AppCompatActivity {
      */
     private void setUpTimesPlayedText() {
         TextView tvTimesPlayed = findViewById(R.id.tvTimesPlayed);
-        SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        String timesPlayed = Integer.toString(sharedPreferences.getInt(getString(R.string.times_played_shared_pref), 0));
+        String timesPlayed = Integer.toString(getTimesPlayed(this));
         tvTimesPlayed.setText(timesPlayed);
     }
 
