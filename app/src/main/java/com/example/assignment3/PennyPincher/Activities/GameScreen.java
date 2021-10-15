@@ -29,21 +29,20 @@ public class GameScreen extends AppCompatActivity {
 
     private void populateButtons() {
         TableLayout table = findViewById(R.id.tableLayout);
+        TableRow.LayoutParams tableLayout = new TableRow.LayoutParams(
+                TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.MATCH_PARENT,
+                1.0f
+        );
+
         for (int row = 0; row < tableHeight; row++) {
             TableRow tableRow = new TableRow(this);
             table.addView(tableRow);
-            tableRow.setLayoutParams(new TableRow.LayoutParams(
-                    TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.MATCH_PARENT,
-                    1.0f
-            ));
+            tableRow.setLayoutParams(tableLayout);
+
             for (int col = 0; col < tableWidth; col++) {
                 Button button = new Button(this);
-                button.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        1.0f
-                ));
+                button.setLayoutParams(new TableRow.LayoutParams(tableLayout));
                 tableRow.addView(button);
             }
         }
