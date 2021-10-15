@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Assignment 3</string>
     <string name="pennyPincher">PennyPincher</string>
     <string name="play">PLAY</string>
@@ -14,7 +14,7 @@
     <string name="creators_header">About The Creators</string>
     <string name="creators_info">Created by Zaid Arshad and Daniel Nguyen for CMPT 276.</string>
     <string name="resources_header">Resources</string>
-    <string name="resources_info">https://www.cleanpng.com/png-canada-penny-debate-in-the-united-states-coin-cent-3490295/
+    <string name="resources_info" tools:ignore="TypographyDashes,Typos">https://www.cleanpng.com/png-canada-penny-debate-in-the-united-states-coin-cent-3490295/
         <br/> https://pnghut.com/png/R2qRTuF1Cz/money-bag-united-states-dollar-image-transparent-png
         <br/> pinterest.ca/pin/408349891195209253/
         <br/>https://www.pngitem.com/pimgs/m/121-1219503_pinching-hand-emoji-png-transparent-png.png</string>
@@ -30,4 +30,7 @@
     <string name="_15">15</string>
     <string name="_20">20</string>
     <string name="erase_times_played">Erase Times Played</string>
+    <string name="times_played_shared_pref">TIMES_PLAYED_SHARED_PREFERENCES</string>
+    <string name="_50">50</string>
+    <string name="times_played">Times Played</string>
 </resources>
