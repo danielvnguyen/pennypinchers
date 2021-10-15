@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="menuPink">#E87B7B</color>
     <color name="background">#4AFBC9</color>
-    <color name="warningRed">#FD4D4D</color>
+    <color name="warningRed">#FF0000</color>
     <color name="brownColour">#9A874E</color>
+    <color name="mainTheme">#4CAF50</color>
+    <color name="fadedWhite">#B3FFFFFF</color>
 </resources>

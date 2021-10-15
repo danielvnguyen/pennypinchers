@@ -27,7 +27,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/options"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="70sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:background="@color/menuPink"
+        android:background="@color/mainTheme"
         android:paddingHorizontal="10dp"
         android:text="@string/board_size"
         android:textColor="@color/white"
@@ -81,21 +81,21 @@
             android:id="@+id/radio4x6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/menuPink"
+            android:buttonTint="@color/mainTheme"
             android:text="@string/_6_x_4" />
 
         <RadioButton
             android:id="@+id/radio5x10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/menuPink"
+            android:buttonTint="@color/mainTheme"
             android:text="@string/_10_x_5" />
 
         <RadioButton
             android:id="@+id/radio6x15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/menuPink"
+            android:buttonTint="@color/mainTheme"
             android:text="@string/_15_x_6" />
 
     </RadioGroup>
@@ -104,7 +104,7 @@
         android:id="@+id/tvAmountMines"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/menuPink"
+        android:background="@color/mainTheme"
         android:paddingHorizontal="40dp"
         android:text="@string/mines"
         android:textColor="@color/white"
@@ -132,28 +132,28 @@
             android:id="@+id/radio6Mines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/menuPink"
+            android:buttonTint="@color/mainTheme"
             android:text="@string/_6" />
 
         <RadioButton
             android:id="@+id/radio10Mines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/menuPink"
+            android:buttonTint="@color/mainTheme"
             android:text="@string/_10" />
 
         <RadioButton
             android:id="@+id/radio15Mines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/menuPink"
+            android:buttonTint="@color/mainTheme"
             android:text="@string/_15" />
 
         <RadioButton
             android:id="@+id/radio20Mines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/menuPink"
+            android:buttonTint="@color/mainTheme"
             android:text="@string/_20" />
 
     </RadioGroup>
@@ -162,7 +162,7 @@
         android:id="@+id/tvTimesPlayedTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/menuPink"
+        android:background="@color/mainTheme"
         android:paddingHorizontal="10dp"
         android:text="@string/times_played"
         android:textAlignment="center"
@@ -178,11 +178,10 @@
         android:id="@+id/tvTimesPlayed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:paddingHorizontal="10dp"
         android:text="@string/_50"
         android:textAlignment="center"
-        android:textColor="@color/menuPink"
+        android:textColor="@color/mainTheme"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnEraseTimesPlayed"

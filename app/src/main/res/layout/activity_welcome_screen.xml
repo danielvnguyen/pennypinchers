@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background"
+    android:background="@color/mainTheme"
     tools:context=".PennyPincher.Activities.WelcomeScreen">
 
   <TextView
@@ -13,7 +13,7 @@
       android:layout_height="wrap_content"
       android:fontFamily="sans-serif-smallcaps"
       android:text="@string/pennyPincher"
-      android:textColor="@color/menuPink"
+      android:textColor="#FFFFFF"
       android:textSize="70sp"
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -28,7 +28,7 @@
       android:layout_height="wrap_content"
       android:text="@string/authors"
       android:textSize="20sp"
-      android:textColor="@color/menuPink"
+      android:textColor="@color/white"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
       android:id="@+id/pbLoading"
       android:layout_width="100dp"
       android:layout_height="100dp"
-      android:theme="@style/Theme.Assignment3"
+      android:theme="@style/Theme.LoadingBar"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
 
   <Button
       android:id="@+id/btnSkip"
-      android:backgroundTint="@color/menuPink"
+      android:backgroundTint="@color/white"
       android:layout_width="75dp"
       android:layout_height="75dp"
       android:background="@drawable/ic_baseline_arrow_forward_24"

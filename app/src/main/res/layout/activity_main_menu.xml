@@ -7,47 +7,58 @@
     tools:context=".PennyPincher.Activities.MainMenu"
     android:background="@drawable/money_background">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/imgPenny"
+            android:contentDescription="@string/penny_for_spinning"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/penny" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/mainTheme"
+        android:layout_margin="10dp"
+        android:text="@string/play"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:backgroundTint="@color/brownColour"
-            android:text="@string/play"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
+    <Button
+        android:id="@+id/optionsButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/mainTheme"
+        android:layout_margin="10dp"
+        android:text="@string/options"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TextContrastCheck" />
 
-        <Button
-            android:id="@+id/optionsButton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:backgroundTint="@color/brownColour"
-            android:text="@string/options"
-            android:textColor="#FBF9F9"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
-
-        <Button
-            android:id="@+id/helpButton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:backgroundTint="@color/brownColour"
-            android:text="@string/help"
-            android:textColor="#F4F0F0"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/helpButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/mainTheme"
+        android:layout_margin="10dp"
+        android:text="@string/help"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/optionsButton"
+        app:layout_constraintStart_toEndOf="@+id/playButton"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/mainMenuHeader"
@@ -77,19 +88,5 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/mainMenuImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/main_menu_graphic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/mainMenuHeader"
-        app:layout_constraintVertical_bias="0.757"
-        app:srcCompat="@drawable/pennypincherlogo"
-        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

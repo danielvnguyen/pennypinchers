@@ -7,7 +7,9 @@ import com.example.assignment3.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        coinRollingAnimation();
         setUpGameBtn();
         setUpOptionsBtn();
         setUpHelpBtn();
@@ -43,6 +46,12 @@ public class MainMenu extends AppCompatActivity {
             Intent intent = HelpScreen.makeIntent(this);
             startActivity(intent);
         });
+    }
+
+    private void coinRollingAnimation() {
+        ImageView imgPenny = findViewById(R.id.imgPenny);
+        imgPenny.setAnimation(AnimationUtils.loadAnimation(this, R.anim.rolling_across));
+        imgPenny.animate();
     }
 
     /**

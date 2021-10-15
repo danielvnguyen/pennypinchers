@@ -8,9 +8,11 @@ import com.example.assignment3.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 public class GameScreen extends AppCompatActivity {
 
@@ -42,7 +44,7 @@ public class GameScreen extends AppCompatActivity {
 
             for (int col = 0; col < tableWidth; col++) {
                 Button button = new Button(this);
-                button.setLayoutParams(new TableRow.LayoutParams(tableLayout));
+                button.setLayoutParams(tableLayout);
                 tableRow.addView(button);
             }
         }
