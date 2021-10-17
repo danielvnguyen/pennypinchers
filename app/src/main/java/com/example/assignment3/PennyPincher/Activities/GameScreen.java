@@ -3,6 +3,7 @@ package com.example.assignment3.PennyPincher.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assignment3.GameModel.BoardOptions;
+import com.example.assignment3.GameModel.GameLogic;
 import com.example.assignment3.R;
 
 import android.content.Context;
@@ -22,6 +23,7 @@ public class GameScreen extends AppCompatActivity {
     private Integer tableWidth;
     private Integer numOfMines;
     private Integer numMinesFound = 0;
+    private GameLogic gameLogic;
 
     Button[][] buttons;
 
@@ -32,9 +34,14 @@ public class GameScreen extends AppCompatActivity {
 
         addTimesPlayed();
         setUpBoardOptions();
+        setUpGameLogic();
         populateButtons();
-        addInMines();
+        addInMines(); //should also be in gamelogic? besides the pictures of the mines
         //updateBoardScans(); <-- to update scan numbers whenever a hidden coin is found
+    }
+
+    private void setUpGameLogic() {
+        gameLogic = GameLogic.getInstance();
     }
 
     private void populateButtons() {
