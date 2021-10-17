@@ -4,6 +4,7 @@ public class BoardOptions {
     private Integer boardWidth;
     private Integer boardHeight;
     private Integer numOfMines;
+    private Boolean isPlaying = false;
     private static BoardOptions instance;
 
     public static BoardOptions getInstance() {
@@ -40,5 +41,13 @@ public class BoardOptions {
 
     public Integer getNumOfMines() {
         return numOfMines;
+    }
+
+    public void setPlaying(Boolean playing) {
+        isPlaying = playing;
+    }
+
+    public Boolean getPlaying() {
+        return isPlaying;
     }
 }
