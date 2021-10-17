@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assignment3.GameModel.BoardOptions;
 import com.example.assignment3.GameModel.GameLogic;
+import com.example.assignment3.GameModel.MoneyBag;
 import com.example.assignment3.R;
 
 import android.content.Context;
@@ -24,7 +25,7 @@ public class GameScreen extends AppCompatActivity {
     private Integer tableHeight;
     private Integer tableWidth;
     private Integer numOfMines;
-    private Integer numMinesFound = 0;
+    private Integer numMinesFound;
     private GameLogic gameLogic;
 
     Button[][] buttons;
@@ -38,7 +39,6 @@ public class GameScreen extends AppCompatActivity {
         setUpBoardOptions();
         populateButtons();
         addInMines();
-        //updateBoardScans(); <-- to update scan numbers whenever a hidden coin is found
     }
 
     private void populateButtons() {
@@ -66,7 +66,9 @@ public class GameScreen extends AppCompatActivity {
                 buttons[row][col] = button;
                 button.setBackgroundResource(R.drawable.money_bag);
 
-                gameLogic.addMoneyBags(button, false, false, row, col);
+                MoneyBag bag = new MoneyBag(button, false, false, row, col);
+                //bag.setUpOnClick(this);
+                gameLogic.addMoneyBags(bag, row, col);
             }
         }
     }
@@ -91,6 +93,7 @@ public class GameScreen extends AppCompatActivity {
                 else {
                     currentMines.add(btn);
                     validMine = true;
+                    btn.setBackgroundResource(R.drawable.penny);
                     gameLogic.setPennies(randomRow, randomCol);
                 }
             }
@@ -106,6 +109,9 @@ public class GameScreen extends AppCompatActivity {
         TextView scansUsed = findViewById(R.id.tvScansUsed);
 
         gameLogic.moneyBagClicked(row, col);
+//        minesFound.setText(gameLogic.getMinesFound() + " mines found of " + numOfMines);
+//        scansUsed.setText(gameLogic.getScansUsed() + " scans used");
+//        btn.setText(Integer.toString(numMines));
     }
 
     private void setUpBoardOptions() {

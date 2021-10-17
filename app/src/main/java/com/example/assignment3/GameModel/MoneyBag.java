@@ -13,6 +13,7 @@ public class MoneyBag {
     private boolean isClicked;
     private int row;
     private int col;
+    private int nearbyHiddenMines;
 
     public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col) {
         this.btn = btn;
@@ -48,5 +49,13 @@ public class MoneyBag {
 
     public void setClicked(boolean clicked) {
         isClicked = clicked;
+    }
+
+    public int getNearbyHiddenMines() {
+        return nearbyHiddenMines;
+    }
+
+    public void setNearbyHiddenMines(int nearbyHiddenMines) {
+        this.nearbyHiddenMines = nearbyHiddenMines;
     }
 }
