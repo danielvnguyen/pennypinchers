@@ -90,9 +90,7 @@ public class GameScreen extends AppCompatActivity {
                 }
                 else {
                     currentMines.add(btn);
-                    btn.setBackgroundResource(R.drawable.penny);
                     validMine = true;
-
                     gameLogic.setPennies(randomRow, randomCol);
                 }
             }

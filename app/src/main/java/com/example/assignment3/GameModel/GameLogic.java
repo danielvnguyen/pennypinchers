@@ -41,35 +41,3 @@ public class GameLogic {
     }
 
 }
-
-class MoneyBag {
-    private Button btn;
-    private boolean isPenny;
-    private boolean isClicked;
-    private int row;
-    private int col;
-
-    public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col) {
-        this.btn = btn;
-        this.isPenny = isPenny;
-        this.isClicked = isClicked;
-        this.row = row;
-        this.col = col;
-    }
-
-    public boolean isPenny() {
-        return isPenny;
-    }
-
-    public void setPenny(boolean penny) {
-        isPenny = penny;
-    }
-
-    public boolean isClicked() {
-        return isClicked;
-    }
-
-    public void setClicked(boolean clicked) {
-        isClicked = clicked;
-    }
-}
