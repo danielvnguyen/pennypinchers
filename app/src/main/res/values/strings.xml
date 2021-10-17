@@ -33,7 +33,7 @@
     <string name="times_played_shared_pref">TIMES_PLAYED_SHARED_PREFERENCES</string>
     <string name="_50">50</string>
     <string name="times_played">Times Played</string>
-    <string name="scans_used_0">Scans used: 0</string>
-    <string name="found_1_of_8_pennies">Found 1 of 8 Pennies</string>
+    <string name="scans_used_0">Scans Used: 0</string>
+    <string name="found_1_of_8_pennies">0 Pennies Found</string>
     <string name="penny_for_spinning">penny for spinning</string>
 </resources>

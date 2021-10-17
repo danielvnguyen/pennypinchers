@@ -2,53 +2,74 @@ package com.example.assignment3.GameModel;
 
 import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 public class GameLogic {
-    /*
-    This class should handle:
-    - when a button is clicked (setOnClickListener?)
-    - when user wins?
-    - implementing how scans work (saving mines as 2D array, updating when hidden mine found + decreasing #'s, etc.)
-        - how to get make 2d array with mines? should addInMines() be here?
-    - updating # mines found and # scans used?
-    - also do that display and save # games started feature.
-     */
 
-    //will need some getters/setters for these
-    private static GameLogic instance;
     private int scansUsed = 0;
     private int minesFound = 0;
-    public MoneyBags[][] moneyBags;
+    private MoneyBag[][] moneyBags;
 
-    public static GameLogic getInstance() {
-        if (instance == null) instance = new GameLogic();
-        return instance;
+    private Integer height;
+    private Integer width;
+
+    public GameLogic(Integer tableHeight, Integer tableWidth) {
+        height = tableHeight;
+        width = tableWidth;
+        moneyBags = new MoneyBag[height][width];
     }
 
-    public int getScansUsed() {
-        return scansUsed;
+    public void addMoneyBags(Button btn, boolean isPenny, boolean isClicked, int row, int col) {
+        for (int i = 0; i < height; i++) {
+            for (int k = 0; k < width; k++) {
+                moneyBags[i][k] = new MoneyBag(btn, isPenny, isClicked, row, col);
+            }
+        }
     }
 
-    public void setScansUsed(int scansUsed) {
-        this.scansUsed = scansUsed;
+    public void setPennies(int row, int col) {
+        moneyBags[row][col].setPenny(true);
     }
 
-    public int getMinesFound() {
-        return minesFound;
+    public void moneyBagClicked(int row, int col) {
+        if (moneyBags[row][col].isPenny()) {
+            System.out.println("hello, am penny");
+        }
+        else {
+            System.out.println("am not penny");
+        }
     }
 
-    public void setMinesFound(int minesFound) {
-        this.minesFound = minesFound;
-    }
 }
 
-class MoneyBags {
+class MoneyBag {
     private Button btn;
-    private boolean hasPenny;
+    private boolean isPenny;
+    private boolean isClicked;
     private int row;
     private int col;
 
-    public boolean isHasPenny() {
-        return hasPenny;
+    public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col) {
+        this.btn = btn;
+        this.isPenny = isPenny;
+        this.isClicked = isClicked;
+        this.row = row;
+        this.col = col;
+    }
+
+    public boolean isPenny() {
+        return isPenny;
+    }
+
+    public void setPenny(boolean penny) {
+        isPenny = penny;
+    }
+
+    public boolean isClicked() {
+        return isClicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        isClicked = clicked;
     }
 }

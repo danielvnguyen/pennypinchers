@@ -8,15 +8,13 @@ import com.example.assignment3.R;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,14 +36,9 @@ public class GameScreen extends AppCompatActivity {
 
         addTimesPlayed();
         setUpBoardOptions();
-        setUpGameLogic();
         populateButtons();
-        addInMines(); //should also be in gamelogic? besides the pictures of the mines
+        addInMines();
         //updateBoardScans(); <-- to update scan numbers whenever a hidden coin is found
-    }
-
-    private void setUpGameLogic() {
-        gameLogic = GameLogic.getInstance();
     }
 
     private void populateButtons() {
@@ -65,11 +58,15 @@ public class GameScreen extends AppCompatActivity {
                 Button button = new Button(this);
                 button.setLayoutParams(tableLayout);
 
-                button.setOnClickListener(view -> gridButtonClicked(button));
+                int finalRow = row;
+                int finalCol = col;
+                button.setOnClickListener(view -> gridButtonClicked(button, finalRow, finalCol));
 
                 tableRow.addView(button);
                 buttons[row][col] = button;
                 button.setBackgroundResource(R.drawable.money_bag);
+
+                gameLogic.addMoneyBags(button, false, false, row, col);
             }
         }
     }
@@ -95,6 +92,8 @@ public class GameScreen extends AppCompatActivity {
                     currentMines.add(btn);
                     btn.setBackgroundResource(R.drawable.penny);
                     validMine = true;
+
+                    gameLogic.setPennies(randomRow, randomCol);
                 }
             }
         }
@@ -104,16 +103,11 @@ public class GameScreen extends AppCompatActivity {
         return lst.contains(btn);
     }
 
-    private void gridButtonClicked(Button btn) {
+    private void gridButtonClicked(Button btn, int row, int col) {
         TextView minesFound = findViewById(R.id.tvPenniesFound);
         TextView scansUsed = findViewById(R.id.tvScansUsed);
 
-        //if user found a mine
-        numMinesFound++;
-        minesFound.setText("Found " + numMinesFound + " of " + numOfMines + " pennies!");
-
-        //if user did not find a mine
-        //activate scan. also activate if user clicks on non-hidden mine.
+        gameLogic.moneyBagClicked(row, col);
     }
 
     private void setUpBoardOptions() {
@@ -122,12 +116,12 @@ public class GameScreen extends AppCompatActivity {
         tableHeight = boardOptions.getBoardHeight();
         numOfMines = boardOptions.getNumOfMines();
         buttons = new Button[tableHeight][tableWidth];
+
+        gameLogic = new GameLogic(tableHeight, tableWidth);
     }
 
     private void addTimesPlayed() {
-        BoardOptions boardOptions = BoardOptions.getInstance();
-        if (!boardOptions.getPlaying()) OptionsScreen.setTimesPlayed(this, OptionsScreen.getTimesPlayed(this)+1);
-        boardOptions.setPlaying(true);
+        OptionsScreen.setTimesPlayed(this, OptionsScreen.getTimesPlayed(this)+1);
     }
 
 
