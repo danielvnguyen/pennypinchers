@@ -7,6 +7,10 @@ import com.example.assignment3.R;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -114,7 +118,9 @@ public class GameScreen extends AppCompatActivity {
     }
 
     private void addTimesPlayed() {
-        OptionsScreen.setTimesPlayed(this, OptionsScreen.getTimesPlayed(this)+1);
+        BoardOptions boardOptions = BoardOptions.getInstance();
+        if (!boardOptions.getPlaying()) OptionsScreen.setTimesPlayed(this, OptionsScreen.getTimesPlayed(this)+1);
+        boardOptions.setPlaying(true);
     }
 
 
