@@ -113,7 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:background="@color/fadedWhite"
-            android:text="@string/resources_info"
+            android:autoLink="web"
+            android:text="@string/linkshere"
             android:textColor="@color/black"
             android:textSize="15sp" />
 

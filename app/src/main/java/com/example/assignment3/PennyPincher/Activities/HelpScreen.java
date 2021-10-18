@@ -3,16 +3,26 @@ package com.example.assignment3.PennyPincher.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.assignment3.R;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class HelpScreen extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_screen);
+
+        TextView resourceInfo = findViewById(R.id.resourcesInfo);
+        resourceInfo.setText(
+                "https://www.cleanpng.com/png-canada-penny-debate-in-the-united-states-coin-cent-3490295/\n" +
+                "https://pnghut.com/png/R2qRTuF1Cz/money-bag-united-states-dollar-image-transparent-png\n" +
+                "pinterest.ca/pin/408349891195209253/\n" +
+                "https://www.pngitem.com/pimgs/m/121-1219503_pinching-hand-emoji-png-transparent-png.png");
     }
 
     //make sure to finish when done
