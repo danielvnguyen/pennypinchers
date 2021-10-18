@@ -14,7 +14,8 @@ public class MoneyBag {
     private int row;
     private int col;
     private int nearbyHiddenMines;
-    private MoneyBag[][] parent;
+    private MoneyBag[][] parent; //parent array, access to all other MoneyBags
+    private boolean isScan;
 
     public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col, MoneyBag[][] parent) {
         this.btn = btn;
@@ -24,6 +25,7 @@ public class MoneyBag {
         this.row = row;
         this.col = col;
         this.parent = parent;
+        this.isScan = false;
     }
 
     public Button getButton() {
@@ -36,17 +38,6 @@ public class MoneyBag {
 
     public void setPenny(boolean penny) {
         isPenny = penny;
-    }
-
-    public void setUpOnClick(Context context) {
-        btn.setOnClickListener((v)-> {
-            if (isPenny) {
-                btn.setBackgroundResource(R.drawable.penny);
-            }
-            else {
-                btn.setBackgroundColor(context.getResources().getColor(R.color.fadedWhite, context.getTheme()));
-            }
-        });
     }
 
     public boolean isClicked() {
@@ -63,5 +54,13 @@ public class MoneyBag {
 
     public void setNearbyHiddenMines(int nearbyHiddenMines) {
         this.nearbyHiddenMines = nearbyHiddenMines;
+    }
+
+    public boolean isScan() {
+        return isScan;
+    }
+
+    public void setScan(boolean scan) {
+        isScan = scan;
     }
 }

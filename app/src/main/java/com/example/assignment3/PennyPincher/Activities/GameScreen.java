@@ -3,19 +3,15 @@ package com.example.assignment3.PennyPincher.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assignment3.GameModel.BoardOptions;
-import com.example.assignment3.GameModel.GameLogic;
 import com.example.assignment3.GameModel.MoneyBag;
 import com.example.assignment3.R;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,8 +21,11 @@ public class GameScreen extends AppCompatActivity {
     private Integer tableHeight;
     private Integer tableWidth;
     private Integer numOfMines;
-    private Integer numMinesFound;
-    private GameLogic gameLogic;
+    private Integer scansUsed = 0;
+    private Integer minesFound = 0;
+
+    Integer[] rowValues;
+    Integer[] colValues;
 
     MoneyBag[][] moneyBags;
 
@@ -63,16 +62,95 @@ public class GameScreen extends AppCompatActivity {
                 moneyBags[row][col] = new MoneyBag(button, false, false, row, col, moneyBags);
                 int finalRow = row;
                 int finalCol = col;
-                moneyBags[row][col].getButton().setOnClickListener((v)-> {
-                    if (moneyBags[finalRow][finalCol].isPenny()) {
-                        moneyBags[finalRow][finalCol].getButton().setBackgroundResource(R.drawable.penny);
-                        System.out.println("hello");
+                button.setOnClickListener((v)-> {
+
+                    //hidden penny clicked/found
+                    if (moneyBags[finalRow][finalCol].isPenny() && !moneyBags[finalRow][finalCol].isClicked()) {
+                        button.setBackgroundResource(R.drawable.penny);
+                        moneyBags[finalRow][finalCol].setClicked(true);
+                        minesFound++;
+                        //update grid (decrease 1 for each scanned block in current row/col)
+                        //go through row/col that hidden mine was found in, update texts for each block that was scanned.
+                        updateScans(finalRow, finalCol);
                     }
-                    else {
-                        //moneyBags[finalRow][finalCol].getButton().setBackgroundColor(context.getResources().getColor(R.color.fadedWhite, context.getTheme()));
+                    //revealed penny clicked (trigger scan)
+                    else if (moneyBags[finalRow][finalCol].isPenny() && moneyBags[finalRow][finalCol].isClicked()){
+                        button.setBackgroundColor(getResources().getColor(R.color.fadedWhite, getTheme()));
+                        moneyBags[finalRow][finalCol].setScan(true);
+                        scansUsed++;
+                        updateRowValues();
+                        updateColValues();
+                        Integer nearbyMines = rowValues[finalRow] + colValues[finalCol];
+                        button.setText(Integer.toString(nearbyMines));
                     }
+                    //empty bag clicked (trigger scan)
+                    else if (!moneyBags[finalRow][finalCol].isPenny() && !moneyBags[finalRow][finalCol].isClicked()) {
+                        button.setBackgroundColor(getResources().getColor(R.color.fadedWhite, getTheme()));
+                        moneyBags[finalRow][finalCol].setClicked(true);
+                        moneyBags[finalRow][finalCol].setScan(true);
+                        scansUsed++;
+                        updateRowValues();
+                        updateColValues();
+                        Integer nearbyMines = rowValues[finalRow] + colValues[finalCol];
+                        button.setText(Integer.toString(nearbyMines));
+                    }
+                    //do nothing if user is clicking on a penny/empty bag that's been scanned already.
                 });
             }
+        }
+    }
+
+    //decrease by 1 for each scanner in current row/col.
+    private void updateScans(int row, int col) {
+        //update row and col values
+        updateRowValues();
+        updateColValues();
+
+        //for each column in the row, and for each row in the column
+        //if current block is a scanner, update text (-1).
+        for (int i = 0; i < row; i++) {
+            if (moneyBags[i][col].isScan()) {
+                Integer newValue = rowValues[i] + colValues[col];
+                moneyBags[i][col].getButton().setText(Integer.toString(newValue));
+            }
+        }
+
+        for (int k = 0; k < col; k++) {
+            if (moneyBags[row][k].isScan()) {
+                Integer newValue = rowValues[row] + colValues[k];
+                moneyBags[row][k].getButton().setText(Integer.toString(newValue));
+            }
+        }
+    }
+
+    //Update rowValues
+    private void updateRowValues() {
+        //for each row
+        for (int i = 0; i < tableHeight; i++) {
+            int count = 0;
+            //check each column, +1 if there's a penny in [row][column].
+            for (int k = 0; k < tableWidth; k++) {
+                //only increment count for hidden pennies.
+                if (moneyBags[i][k].isPenny() && !moneyBags[i][k].isClicked()) {
+                    count++;
+                }
+            }
+            rowValues[i] = count;
+        }
+    }
+
+    //Update colValues
+    private void updateColValues() {
+        //for each column
+        for (int i = 0; i < tableWidth; i++) {
+            int count = 0;
+            //check each row
+            for (int k = 0; k < tableHeight; k++) {
+                if (moneyBags[k][i].isPenny() && !moneyBags[k][i].isClicked()) {
+                    count++;
+                }
+            }
+            colValues[i] = count;
         }
     }
 
@@ -96,8 +174,7 @@ public class GameScreen extends AppCompatActivity {
                 else {
                     currentMines.add(bag);
                     validMine = true;
-                    bag.getButton().setBackgroundResource(R.drawable.penny);
-                    //gameLogic.setPennies(randomRow, randomCol);
+                    moneyBags[randomRow][randomCol].setPenny(true);
                 }
             }
         }
@@ -114,7 +191,8 @@ public class GameScreen extends AppCompatActivity {
         numOfMines = boardOptions.getNumOfMines();
 
         moneyBags = new MoneyBag[tableHeight][tableWidth];
-        gameLogic = new GameLogic(tableHeight, tableWidth);
+        rowValues = new Integer[tableHeight];
+        colValues = new Integer[tableWidth];
     }
 
     private void addTimesPlayed() {
