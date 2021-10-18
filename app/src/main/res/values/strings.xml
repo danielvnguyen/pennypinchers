@@ -34,4 +34,5 @@
     <string name="penny_for_spinning">penny for spinning</string>
     <string name="start">Start</string>
     <string name="linkshere">linksHere</string>
+    <string name="homePageLink">https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home </string>
 </resources>

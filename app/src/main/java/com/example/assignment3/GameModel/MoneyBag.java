@@ -13,7 +13,6 @@ public class MoneyBag {
     private boolean isClicked;
     private int row;
     private int col;
-    private int nearbyHiddenMines;
     private MoneyBag[][] parent; //parent array, access to all other MoneyBags
     private boolean isScan;
 
@@ -45,14 +44,6 @@ public class MoneyBag {
 
     public void setClicked(boolean clicked) {
         isClicked = clicked;
-    }
-
-    public int getNearbyHiddenMines() {
-        return nearbyHiddenMines;
-    }
-
-    public void setNearbyHiddenMines(int nearbyHiddenMines) {
-        this.nearbyHiddenMines = nearbyHiddenMines;
     }
 
     public boolean isScan() {

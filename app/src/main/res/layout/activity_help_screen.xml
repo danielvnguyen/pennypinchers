@@ -92,6 +92,16 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/homePageLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/fadedWhite"
+            android:autoLink="web"
+            android:text="@string/homePageLink"
+            android:textColor="@color/black"
+            android:translationX="15dp" />
+
+        <TextView
             android:id="@+id/resourcesHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
