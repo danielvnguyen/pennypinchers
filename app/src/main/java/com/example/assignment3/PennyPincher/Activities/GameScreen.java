@@ -1,5 +1,6 @@
 package com.example.assignment3.PennyPincher.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assignment3.GameModel.BoardOptions;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,7 +28,6 @@ public class GameScreen extends AppCompatActivity {
 
     Integer[] rowValues;
     Integer[] colValues;
-
     MoneyBag[][] moneyBags;
 
     @Override
@@ -62,22 +63,42 @@ public class GameScreen extends AppCompatActivity {
                 moneyBags[row][col] = new MoneyBag(button, false, false, row, col, moneyBags);
                 int finalRow = row;
                 int finalCol = col;
+                TextView scansUsedTV = findViewById(R.id.tvScansUsed);
+                TextView minesFoundTV = findViewById(R.id.tvPenniesFound);
                 button.setOnClickListener((v)-> {
 
                     //hidden penny clicked/found
                     if (moneyBags[finalRow][finalCol].isPenny() && !moneyBags[finalRow][finalCol].isClicked()) {
                         button.setBackgroundResource(R.drawable.penny);
                         moneyBags[finalRow][finalCol].setClicked(true);
+
                         minesFound++;
+                        minesFoundTV.setText(minesFound + " pennies found of " + numOfMines);
+
                         //update grid (decrease 1 for each scanned block in current row/col)
                         //go through row/col that hidden mine was found in, update texts for each block that was scanned.
-                        updateScans(finalRow, finalCol);
+                        updateRowValues();
+                        updateColValues();
+                        updateScanValues(finalRow, finalCol);
+
+                        //when user hits max pennies found, calculate score and announce win.
+                        if (minesFound.equals(numOfMines)) {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                            alert.setTitle("You won!");
+                            alert.setCancelable(false);
+                            alert.setPositiveButton("Go back", (dialogInterface, i) -> finish());
+                            alert.setIcon(R.drawable.pennypincherlogo);
+                            alert.show();
+                        }
                     }
                     //revealed penny clicked (trigger scan)
                     else if (moneyBags[finalRow][finalCol].isPenny() && moneyBags[finalRow][finalCol].isClicked()){
                         button.setBackgroundColor(getResources().getColor(R.color.fadedWhite, getTheme()));
                         moneyBags[finalRow][finalCol].setScan(true);
+
                         scansUsed++;
+                        scansUsedTV.setText(scansUsed + "scans used");
+
                         updateRowValues();
                         updateColValues();
                         Integer nearbyMines = rowValues[finalRow] + colValues[finalCol];
@@ -88,7 +109,10 @@ public class GameScreen extends AppCompatActivity {
                         button.setBackgroundColor(getResources().getColor(R.color.fadedWhite, getTheme()));
                         moneyBags[finalRow][finalCol].setClicked(true);
                         moneyBags[finalRow][finalCol].setScan(true);
+
                         scansUsed++;
+                        scansUsedTV.setText(scansUsed + " scans used");
+
                         updateRowValues();
                         updateColValues();
                         Integer nearbyMines = rowValues[finalRow] + colValues[finalCol];
@@ -101,23 +125,19 @@ public class GameScreen extends AppCompatActivity {
     }
 
     //decrease by 1 for each scanner in current row/col.
-    private void updateScans(int row, int col) {
-        //update row and col values
-        updateRowValues();
-        updateColValues();
-
+    private void updateScanValues(int row, int col) {
         //for each column in the row, and for each row in the column
         //if current block is a scanner, update text (-1).
         for (int i = 0; i < row; i++) {
             if (moneyBags[i][col].isScan()) {
-                Integer newValue = rowValues[i] + colValues[col];
+                int newValue = rowValues[i] + colValues[col];
                 moneyBags[i][col].getButton().setText(Integer.toString(newValue));
             }
         }
 
         for (int k = 0; k < col; k++) {
             if (moneyBags[row][k].isScan()) {
-                Integer newValue = rowValues[row] + colValues[k];
+                int newValue = rowValues[row] + colValues[k];
                 moneyBags[row][k].getButton().setText(Integer.toString(newValue));
             }
         }
