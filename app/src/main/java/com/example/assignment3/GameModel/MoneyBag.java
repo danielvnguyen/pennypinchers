@@ -14,14 +14,20 @@ public class MoneyBag {
     private int row;
     private int col;
     private int nearbyHiddenMines;
+    private MoneyBag[][] parent;
 
-    public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col) {
+    public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col, MoneyBag[][] parent) {
         this.btn = btn;
         this.btn.setBackgroundResource(R.drawable.money_bag);
         this.isPenny = isPenny;
         this.isClicked = isClicked;
         this.row = row;
         this.col = col;
+        this.parent = parent;
+    }
+
+    public Button getButton() {
+        return btn;
     }
 
     public boolean isPenny() {

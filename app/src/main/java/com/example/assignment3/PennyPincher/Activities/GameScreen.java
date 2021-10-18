@@ -28,7 +28,7 @@ public class GameScreen extends AppCompatActivity {
     private Integer numMinesFound;
     private GameLogic gameLogic;
 
-    Button[][] buttons;
+    MoneyBag[][] moneyBags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,61 +57,54 @@ public class GameScreen extends AppCompatActivity {
             for (int col = 0; col < tableWidth; col++) {
                 Button button = new Button(this);
                 button.setLayoutParams(tableLayout);
-
-                int finalRow = row;
-                int finalCol = col;
-                button.setOnClickListener(view -> gridButtonClicked(button, finalRow, finalCol));
-
                 tableRow.addView(button);
-                buttons[row][col] = button;
                 button.setBackgroundResource(R.drawable.money_bag);
 
-                MoneyBag bag = new MoneyBag(button, false, false, row, col);
-                //bag.setUpOnClick(this);
-                gameLogic.addMoneyBags(bag, row, col);
+                moneyBags[row][col] = new MoneyBag(button, false, false, row, col, moneyBags);
+                int finalRow = row;
+                int finalCol = col;
+                moneyBags[row][col].getButton().setOnClickListener((v)-> {
+                    if (moneyBags[finalRow][finalCol].isPenny()) {
+                        moneyBags[finalRow][finalCol].getButton().setBackgroundResource(R.drawable.penny);
+                        System.out.println("hello");
+                    }
+                    else {
+                        //moneyBags[finalRow][finalCol].getButton().setBackgroundColor(context.getResources().getColor(R.color.fadedWhite, context.getTheme()));
+                    }
+                });
             }
         }
     }
 
     private void addInMines() {
-        ArrayList<Button> currentMines = new ArrayList<>();
+        ArrayList<MoneyBag> currentMines = new ArrayList<>();
 
         for (int i = 0; i < numOfMines; i++) {
             Random rand = new Random();
             boolean validMine = false;
-            int randomRow = rand.nextInt(buttons.length);
-            int randomCol = rand.nextInt(buttons[randomRow].length);
-            Button btn = buttons[randomRow][randomCol];
+            int randomRow = rand.nextInt(moneyBags.length);
+            int randomCol = rand.nextInt(moneyBags[randomRow].length);
+            MoneyBag bag = moneyBags[randomRow][randomCol];
 
             //make sure random positions are not chosen twice
             while (!validMine) {
-                if (checkMines(btn, currentMines)) {
-                    randomRow = rand.nextInt(buttons.length);
-                    randomCol = rand.nextInt(buttons[randomRow].length);
-                    btn = buttons[randomRow][randomCol];
+                if (checkMines(bag, currentMines)) {
+                    randomRow = rand.nextInt(moneyBags.length);
+                    randomCol = rand.nextInt(moneyBags[randomRow].length);
+                    bag = moneyBags[randomRow][randomCol];
                 }
                 else {
-                    currentMines.add(btn);
+                    currentMines.add(bag);
                     validMine = true;
-                    btn.setBackgroundResource(R.drawable.penny);
-                    gameLogic.setPennies(randomRow, randomCol);
+                    bag.getButton().setBackgroundResource(R.drawable.penny);
+                    //gameLogic.setPennies(randomRow, randomCol);
                 }
             }
         }
     }
 
-    private boolean checkMines(Button btn, ArrayList<Button> lst) {
-        return lst.contains(btn);
-    }
-
-    private void gridButtonClicked(Button btn, int row, int col) {
-        TextView minesFound = findViewById(R.id.tvPenniesFound);
-        TextView scansUsed = findViewById(R.id.tvScansUsed);
-
-        gameLogic.moneyBagClicked(row, col);
-//        minesFound.setText(gameLogic.getMinesFound() + " mines found of " + numOfMines);
-//        scansUsed.setText(gameLogic.getScansUsed() + " scans used");
-//        btn.setText(Integer.toString(numMines));
+    private boolean checkMines(MoneyBag bag, ArrayList<MoneyBag> lst) {
+        return lst.contains(bag);
     }
 
     private void setUpBoardOptions() {
@@ -119,8 +112,8 @@ public class GameScreen extends AppCompatActivity {
         tableWidth = boardOptions.getBoardWidth();
         tableHeight = boardOptions.getBoardHeight();
         numOfMines = boardOptions.getNumOfMines();
-        buttons = new Button[tableHeight][tableWidth];
 
+        moneyBags = new MoneyBag[tableHeight][tableWidth];
         gameLogic = new GameLogic(tableHeight, tableWidth);
     }
 
