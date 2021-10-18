@@ -19,7 +19,6 @@ public class MoneyBag {
 
     public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col, MoneyBag[][] parent) {
         this.btn = btn;
-        this.btn.setBackgroundResource(R.drawable.money_bag);
         this.isPenny = isPenny;
         this.isClicked = isClicked;
         this.row = row;

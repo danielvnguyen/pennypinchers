@@ -36,4 +36,5 @@
     <string name="scans_used_0">Scans Used: 0</string>
     <string name="found_1_of_8_pennies">0 Pennies Found</string>
     <string name="penny_for_spinning">penny for spinning</string>
+    <string name="start">Start</string>
 </resources>
