@@ -36,6 +36,8 @@ public class GameScreen extends AppCompatActivity {
     Integer[] colValues;
     MoneyBag[][] moneyBags;
 
+    //high scores. 3 board sizes, 4 mine options each. so 12 high scores?
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,8 @@ public class GameScreen extends AppCompatActivity {
         addInMines();
         setUpStartButton();
     }
+
+
 
     @SuppressLint("SetTextI18n")
     private void populateButtons() {
@@ -131,6 +135,7 @@ public class GameScreen extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateScanValues() {
         for (int i = 0; i < moneyBags.length; i++) {
             for (int k = 0; k < moneyBags[i].length; k++) {

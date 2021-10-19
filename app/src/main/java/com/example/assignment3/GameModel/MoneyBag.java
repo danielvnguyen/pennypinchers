@@ -1,14 +1,9 @@
 package com.example.assignment3.GameModel;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.example.assignment3.R;
 
 public class MoneyBag {
-    private Button btn;
+    private final Button btn;
     private boolean isPenny;
     private boolean isClicked;
     private int row;

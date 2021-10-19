@@ -29,10 +29,11 @@
     <string name="times_played_shared_pref">TIMES_PLAYED_SHARED_PREFERENCES</string>
     <string name="_50">50</string>
     <string name="times_played">Times Played</string>
-    <string name="scans_used_0">Scans Used: 0</string>
+    <string name="scans_used_0">0 Scans Used</string>
     <string name="found_1_of_8_pennies">0 Pennies Found</string>
     <string name="penny_for_spinning">penny for spinning</string>
     <string name="start">Start</string>
     <string name="linkshere">linksHere</string>
     <string name="homePageLink">https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home </string>
+    <string name="erase_high_scores">Erase High Scores</string>
 </resources>

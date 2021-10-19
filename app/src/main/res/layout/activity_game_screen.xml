@@ -62,6 +62,15 @@
             android:text="@string/found_1_of_8_pennies"
             android:textColor="@color/black"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="High Score: #"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </FrameLayout>
 
 </FrameLayout>
