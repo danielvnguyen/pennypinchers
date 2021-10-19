@@ -22,7 +22,17 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+/**
+ * This class displays the game and vital
+ * information to the user playing. Data includes
+ * # of mines found, # of scans used, game manager
+ * object, table configuration. Supports adding in
+ * all of the buttons, and handling animations.
+ */
 public class GameScreen extends AppCompatActivity {
+    private static final int HIDDEN_MINE_FOUND = 0;
+    private static final int MINE_USED_FOR_SCAN = 1;
+    private static final int BAG_USED_FOR_SCAN = 2;
 
     private Integer tableHeight;
     private Integer tableWidth;
@@ -30,10 +40,8 @@ public class GameScreen extends AppCompatActivity {
     private Integer scansUsed = 0;
     private Integer minesFound = 0;
     private GameManager gameManager;
-
     MoneyBag[][] moneyBags;
 
-    //high scores. 3 board sizes, 4 mine options each. so 12 high scores?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +80,14 @@ public class GameScreen extends AppCompatActivity {
                 TextView minesFoundTV = findViewById(R.id.tvPenniesFound);
 
                 //create MoneyBag object for each button in gameManager class
-                gameManager.addMoneyBag(button, false, false, row, col, moneyBags);
+                gameManager.addMoneyBag(button, false, false, row, col);
 
-                //still need to have onClickListener for the buttons, then call gameManager function
                 int finalRow = row;
                 int finalCol = col;
                 button.setOnClickListener((v)-> {
                     int clickResult = gameManager.moneyBagClicked(finalRow, finalCol);
 
-                    if (clickResult == 0) {
+                    if (clickResult == HIDDEN_MINE_FOUND) {
                         setScaledBackground(button, R.drawable.penny);
                         minesFound++;
                         minesFoundTV.setText(minesFound + " pennies found of " + numOfMines);
@@ -95,15 +102,15 @@ public class GameScreen extends AppCompatActivity {
                             alert.show();
                         }
                     }
-                    else if (clickResult == 1) {
+                    else if (clickResult == MINE_USED_FOR_SCAN) {
+                        scansUsed++;
+                        scansUsedTV.setText(scansUsed + " scans used");
+
+                    }
+                    else if (clickResult == BAG_USED_FOR_SCAN) {
                         scansUsed++;
                         scansUsedTV.setText(scansUsed + " scans used");
                     }
-                    else if (clickResult == 2) {
-                        scansUsed++;
-                        scansUsedTV.setText(scansUsed + " scans used");
-                    }
-                    //do nothing for clickResult == 3
                 });
             }
         }

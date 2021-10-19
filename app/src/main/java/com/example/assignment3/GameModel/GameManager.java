@@ -10,8 +10,15 @@ import java.util.Random;
 
 /**
  * This class manages the functionality of the GameScreen.
+ * Data includes table configuration, collection of all the
+ * money bags, and collections of the scan values. Supports
+ * adding money bags, on click events, and scanning.
  */
 public class GameManager {
+    private static final int HIDDEN_MINE_FOUND = 0;
+    private static final int MINE_USED_FOR_SCAN = 1;
+    private static final int BAG_USED_FOR_SCAN = 2;
+    private static final int SCAN_CLICKED = 3;
 
     Integer[] rowValues;
     Integer[] colValues;
@@ -30,8 +37,8 @@ public class GameManager {
     }
 
     //fill in moneyBags with all of the buttons (moneyBag objects w/ button attribute)
-    public void addMoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col, MoneyBag[][] parent) {
-        moneyBags[row][col] = new MoneyBag(btn, isPenny, isClicked, row, col, parent);
+    public void addMoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col) {
+        moneyBags[row][col] = new MoneyBag(btn, isPenny, isClicked);
     }
 
     @SuppressLint("SetTextI18n")
@@ -46,7 +53,7 @@ public class GameManager {
             updateColValues();
             updateScanValues();
 
-            return 0;
+            return HIDDEN_MINE_FOUND;
         }
         //revealed penny clicked (trigger scan)
         else if (moneyBags[row][col].isPenny() && moneyBags[row][col].isClicked()) {
@@ -56,7 +63,7 @@ public class GameManager {
             updateColValues();
             int nearbyMines = rowValues[row] + colValues[col];
             moneyBags[row][col].getButton().setText(Integer.toString(nearbyMines));
-            return 1;
+            return MINE_USED_FOR_SCAN;
         }
         //empty bag clicked (trigger scan)
         else if (!moneyBags[row][col].isPenny() && !moneyBags[row][col].isClicked()) {
@@ -68,10 +75,10 @@ public class GameManager {
             updateColValues();
             int nearbyMines = rowValues[row] + colValues[col];
             moneyBags[row][col].getButton().setText(Integer.toString(nearbyMines));
-            return 2;
+            return BAG_USED_FOR_SCAN;
         }
         //do nothing if user is clicking on a penny/empty bag that's been scanned already.
-        return 3;
+        return SCAN_CLICKED;
     }
 
     public void addInMines() {

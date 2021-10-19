@@ -2,22 +2,22 @@ package com.example.assignment3.GameModel;
 
 import android.widget.Button;
 
+/**
+ * This class represents the money bag objects
+ * that spread through the grid. Data includes
+ * each button, booleans depending on the
+ * money bag's status, and info of it's position.
+ */
 public class MoneyBag {
     private final Button btn;
     private boolean isPenny;
     private boolean isClicked;
-    private int row;
-    private int col;
-    private MoneyBag[][] parent; //parent array, access to all other MoneyBags
     private boolean isScan;
 
-    public MoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col, MoneyBag[][] parent) {
+    public MoneyBag(Button btn, boolean isPenny, boolean isClicked) {
         this.btn = btn;
         this.isPenny = isPenny;
         this.isClicked = isClicked;
-        this.row = row;
-        this.col = col;
-        this.parent = parent;
         this.isScan = false;
     }
 
