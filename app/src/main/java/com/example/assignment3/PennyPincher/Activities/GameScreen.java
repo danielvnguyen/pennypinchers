@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assignment3.GameModel.BoardOptions;
+import com.example.assignment3.GameModel.GameManager;
 import com.example.assignment3.GameModel.MoneyBag;
 import com.example.assignment3.R;
 
@@ -21,9 +22,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class GameScreen extends AppCompatActivity {
 
     private Integer tableHeight;
@@ -31,9 +29,8 @@ public class GameScreen extends AppCompatActivity {
     private Integer numOfMines;
     private Integer scansUsed = 0;
     private Integer minesFound = 0;
+    private GameManager gameManager;
 
-    Integer[] rowValues;
-    Integer[] colValues;
     MoneyBag[][] moneyBags;
 
     //high scores. 3 board sizes, 4 mine options each. so 12 high scores?
@@ -49,8 +46,6 @@ public class GameScreen extends AppCompatActivity {
         addInMines();
         setUpStartButton();
     }
-
-
 
     @SuppressLint("SetTextI18n")
     private void populateButtons() {
@@ -73,25 +68,22 @@ public class GameScreen extends AppCompatActivity {
                 button.setLayoutParams(tableLayout);
                 tableRow.addView(button);
 
-                moneyBags[row][col] = new MoneyBag(button, false, false, row, col, moneyBags);
-                int finalRow = row;
-                int finalCol = col;
                 TextView scansUsedTV = findViewById(R.id.tvScansUsed);
                 TextView minesFoundTV = findViewById(R.id.tvPenniesFound);
+
+                //create MoneyBag object for each button in gameManager class
+                gameManager.addMoneyBag(button, false, false, row, col, moneyBags);
+
+                //still need to have onClickListener for the buttons, then call gameManager function
+                int finalRow = row;
+                int finalCol = col;
                 button.setOnClickListener((v)-> {
+                    int clickResult = gameManager.moneyBagClicked(finalRow, finalCol);
 
-                    //hidden penny clicked/found
-                    if (moneyBags[finalRow][finalCol].isPenny() && !moneyBags[finalRow][finalCol].isClicked()) {
+                    if (clickResult == 0) {
                         setScaledBackground(button, R.drawable.penny);
-                        moneyBags[finalRow][finalCol].setClicked(true);
-
                         minesFound++;
                         minesFoundTV.setText(minesFound + " pennies found of " + numOfMines);
-
-                        //update grid (decrease 1 for each scanned block in current row/col)
-                        updateRowValues();
-                        updateColValues();
-                        updateScanValues();
 
                         //when user hits max pennies found, calculate score and announce win.
                         if (minesFound.equals(numOfMines)) {
@@ -103,81 +95,19 @@ public class GameScreen extends AppCompatActivity {
                             alert.show();
                         }
                     }
-                    //revealed penny clicked (trigger scan)
-                    else if (moneyBags[finalRow][finalCol].isPenny() && moneyBags[finalRow][finalCol].isClicked()){
-                        moneyBags[finalRow][finalCol].setScan(true);
-
+                    else if (clickResult == 1) {
                         scansUsed++;
                         scansUsedTV.setText(scansUsed + " scans used");
-
-                        updateRowValues();
-                        updateColValues();
-                        int nearbyMines = rowValues[finalRow] + colValues[finalCol];
-                        button.setText(Integer.toString(nearbyMines));
                     }
-                    //empty bag clicked (trigger scan)
-                    else if (!moneyBags[finalRow][finalCol].isPenny() && !moneyBags[finalRow][finalCol].isClicked()) {
-                        button.setBackgroundResource(R.color.fadedWhite);
-                        moneyBags[finalRow][finalCol].setClicked(true);
-                        moneyBags[finalRow][finalCol].setScan(true);
-
+                    else if (clickResult == 2) {
                         scansUsed++;
                         scansUsedTV.setText(scansUsed + " scans used");
-
-                        updateRowValues();
-                        updateColValues();
-                        int nearbyMines = rowValues[finalRow] + colValues[finalCol];
-                        button.setText(Integer.toString(nearbyMines));
                     }
-                    //do nothing if user is clicking on a penny/empty bag that's been scanned already.
+                    //do nothing for clickResult == 3
                 });
             }
         }
     }
-
-    @SuppressLint("SetTextI18n")
-    private void updateScanValues() {
-        for (int i = 0; i < moneyBags.length; i++) {
-            for (int k = 0; k < moneyBags[i].length; k++) {
-                if (moneyBags[i][k].isScan()) {
-                    int newValue = rowValues[i] + colValues[k];
-                    moneyBags[i][k].getButton().setText(Integer.toString(newValue));
-                }
-            }
-        }
-    }
-
-    //Update rowValues
-    private void updateRowValues() {
-        //for each row
-        for (int i = 0; i < tableHeight; i++) {
-            int count = 0;
-            //check each column, +1 if there's a penny in [row][column].
-            for (int k = 0; k < tableWidth; k++) {
-                //only increment count for hidden pennies.
-                if (moneyBags[i][k].isPenny() && !moneyBags[i][k].isClicked()) {
-                    count++;
-                }
-            }
-            rowValues[i] = count;
-        }
-    }
-
-    //Update colValues
-    private void updateColValues() {
-        //for each column
-        for (int i = 0; i < tableWidth; i++) {
-            int count = 0;
-            //check each row
-            for (int k = 0; k < tableHeight; k++) {
-                if (moneyBags[k][i].isPenny() && !moneyBags[k][i].isClicked()) {
-                    count++;
-                }
-            }
-            colValues[i] = count;
-        }
-    }
-
 
     private void setScaledBackground(Button button, int drawable) {
         int width = button.getWidth();
@@ -222,35 +152,8 @@ public class GameScreen extends AppCompatActivity {
         view.setVisibility(View.INVISIBLE);
     }
 
-
     private void addInMines() {
-        ArrayList<MoneyBag> currentMines = new ArrayList<>();
-
-        for (int i = 0; i < numOfMines; i++) {
-            Random rand = new Random();
-            boolean validMine = false;
-            int randomRow = rand.nextInt(moneyBags.length);
-            int randomCol = rand.nextInt(moneyBags[randomRow].length);
-            MoneyBag bag = moneyBags[randomRow][randomCol];
-
-            //make sure random positions are not chosen twice
-            while (!validMine) {
-                if (checkMines(bag, currentMines)) {
-                    randomRow = rand.nextInt(moneyBags.length);
-                    randomCol = rand.nextInt(moneyBags[randomRow].length);
-                    bag = moneyBags[randomRow][randomCol];
-                }
-                else {
-                    currentMines.add(bag);
-                    validMine = true;
-                    moneyBags[randomRow][randomCol].setPenny(true);
-                }
-            }
-        }
-    }
-
-    private boolean checkMines(MoneyBag bag, ArrayList<MoneyBag> lst) {
-        return lst.contains(bag);
+        gameManager.addInMines();
     }
 
     private void setUpBoardOptions() {
@@ -260,8 +163,7 @@ public class GameScreen extends AppCompatActivity {
         numOfMines = boardOptions.getNumOfMines();
 
         moneyBags = new MoneyBag[tableHeight][tableWidth];
-        rowValues = new Integer[tableHeight];
-        colValues = new Integer[tableWidth];
+        gameManager = new GameManager(moneyBags, tableHeight, tableWidth, numOfMines);
     }
 
     private void addTimesPlayed() {
