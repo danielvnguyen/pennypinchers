@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment 3</string>
+    <string name="app_name">PennyPincher</string>
     <string name="pennyPincher">PennyPincher</string>
     <string name="play">PLAY</string>
     <string name="options">OPTIONS</string>
