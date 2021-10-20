@@ -72,7 +72,6 @@ public class OptionsScreen extends AppCompatActivity {
                 Integer height = BOARD_HEIGHTS[index];
                 Integer width = BOARD_WIDTHS[index];
                 boardOptions.setBoardSize(width, height);
-                Log.d("Options", width + " x " + height +" Sized Board");
             });
         }
     }
@@ -115,7 +114,6 @@ public class OptionsScreen extends AppCompatActivity {
             radioButtonList[i].setOnClickListener((v) -> {
                 Integer numOfMines = MINE_AMOUNTS[index];
                 boardOptions.setNumOfMines(numOfMines);
-                Log.d("Options",numOfMines +" Mine Game");
             });
         }
     }

@@ -78,8 +78,9 @@ public class GameScreen extends AppCompatActivity {
             tableRow.setLayoutParams(tableLayout);
 
             for (int col = 0; col < tableWidth; col++) {
-                Button button = new Button(this);
 
+                // Setting button visuals and adding to table
+                Button button = new Button(this);
                 button.setTypeface(Typeface.create("sans-serif-bold", Typeface.NORMAL));
                 button.setTextSize(20);
                 button.setVisibility(View.INVISIBLE);
@@ -176,6 +177,9 @@ public class GameScreen extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Locks each board button's size and fades them in
+     */
     private void setUpStartButton() {
         Button startButton = findViewById(R.id.startButton);
         View coverView = findViewById(R.id.coverView);

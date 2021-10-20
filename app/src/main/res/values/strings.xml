@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">PennyPincher</string>
     <string name="pennyPincher">PennyPincher</string>
     <string name="play">PLAY</string>
@@ -11,6 +11,10 @@
     You must find all of the hidden coins within the money bags using as little scans as you can!
     Pressing on a money bag with no coin uses up a scan, which helps you find the coin
     in each row and/or column. You can also use a scan on a coin you found. Good luck!</string>
+    <string name="links_citations" tools:ignore="Typos">https://www.cleanpng.com/png-canada-penny-debate-in-the-united-states-coin-cent-3490295\n
+                https://pnghut.com/png/R2qRTuF1Cz/money-bag-united-states-dollar-image-transparent-png\n
+                pinterest.ca/pin/408349891195209253\n
+                https://www.pngitem.com/pimgs/m/121-1219503_pinching-hand-emoji-png-transparent-png.png</string>
     <string name="creators_header">About The Creators</string>
     <string name="creators_info">Created by Zaid Arshad and Daniel Nguyen for CMPT 276.</string>
     <string name="resources_header">Resources</string>
