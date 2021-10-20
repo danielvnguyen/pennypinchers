@@ -1,14 +1,8 @@
 package com.example.assignment3.GameModel;
 
 import android.annotation.SuppressLint;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-
-import com.example.assignment3.PennyPincher.Activities.GameScreen;
 import com.example.assignment3.R;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -40,7 +34,6 @@ public class GameManager {
         tableWidth = width;
     }
 
-    //fill in moneyBags with all of the buttons (moneyBag objects w/ button attribute)
     public void addMoneyBag(Button btn, boolean isPenny, boolean isClicked, int row, int col) {
         moneyBags[row][col] = new MoneyBag(btn, isPenny, isClicked);
     }
@@ -52,7 +45,6 @@ public class GameManager {
         if (moneyBags[row][col].isPenny() && !moneyBags[row][col].isClicked()) {
             moneyBags[row][col].setClicked(true);
 
-            //update grid (decrease 1 for each scanned block in current row/col)
             updateRowValues();
             updateColValues();
             updateScanValues();
@@ -60,11 +52,13 @@ public class GameManager {
             return HIDDEN_MINE_FOUND;
         }
         //revealed penny clicked (trigger scan)
-        else if (moneyBags[row][col].isPenny() && moneyBags[row][col].isClicked() && !moneyBags[row][col].isScan()) {
+        else if (moneyBags[row][col].isPenny() && moneyBags[row][col].isClicked()
+                && !moneyBags[row][col].isScan()) {
             moneyBags[row][col].setScan(true);
 
             updateRowValues();
             updateColValues();
+
             int nearbyMines = rowValues[row] + colValues[col];
             moneyBags[row][col].getButton().setText(Integer.toString(nearbyMines));
             return MINE_USED_FOR_SCAN;
@@ -74,8 +68,10 @@ public class GameManager {
             moneyBags[row][col].getButton().setBackgroundResource(R.color.transparent);
             moneyBags[row][col].setClicked(true);
             moneyBags[row][col].setScan(true);
+
             updateRowValues();
             updateColValues();
+
             int nearbyMines = rowValues[row] + colValues[col];
             moneyBags[row][col].getButton().setText(Integer.toString(nearbyMines));
             return BAG_USED_FOR_SCAN;
@@ -127,12 +123,9 @@ public class GameManager {
     }
 
     public void updateRowValues() {
-        //for each row
         for (int i = 0; i < tableHeight; i++) {
             int count = 0;
-            //check each column, +1 if there's a penny in [row][column].
             for (int k = 0; k < tableWidth; k++) {
-                //only increment count for hidden pennies.
                 if (moneyBags[i][k].isPenny() && !moneyBags[i][k].isClicked()) {
                     count++;
                 }
@@ -142,10 +135,8 @@ public class GameManager {
     }
 
     public void updateColValues() {
-        //for each column
         for (int i = 0; i < tableWidth; i++) {
             int count = 0;
-            //check each row
             for (int k = 0; k < tableHeight; k++) {
                 if (moneyBags[k][i].isPenny() && !moneyBags[k][i].isClicked()) {
                     count++;
