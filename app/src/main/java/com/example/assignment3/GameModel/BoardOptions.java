@@ -1,5 +1,11 @@
 package com.example.assignment3.GameModel;
 
+/**
+ * This class handles the board option configurations.
+ * Provides Singleton support to send the options data
+ * to other classes. Data includes board height, width,
+ * number of mines.
+ */
 public class BoardOptions {
     private Integer boardWidth;
     private Integer boardHeight;
