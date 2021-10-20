@@ -8,14 +8,15 @@
 
     <Button
         android:id="@+id/startButton"
-        android:layout_gravity="center"
         android:layout_width="200dp"
         android:layout_height="100dp"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
         android:backgroundTint="@color/mainTheme"
         android:text="@string/start"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
 
     <FrameLayout
         android:id="@+id/constraintLayout4"

@@ -13,7 +13,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Screen that allows user to change the number of mines and the size of the game board
