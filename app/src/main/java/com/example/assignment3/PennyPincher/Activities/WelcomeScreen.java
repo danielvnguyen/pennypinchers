@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
- * Activity for activity_welcome_screen
+ * Activity for that shows the splash for the application
  */
 public class WelcomeScreen extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class WelcomeScreen extends AppCompatActivity {
     private void startMainMenu() {
         if (!screenEnded) {
             screenEnded = true;
-            startActivity(MainMenu.makeIntent(this));
+            startActivity(MainMenuScreen.makeIntent(this));
             finish();
         }
     }

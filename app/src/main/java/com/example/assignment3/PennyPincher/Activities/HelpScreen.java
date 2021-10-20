@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+ * Screen that shows how to play and sources cited
+ */
 public class HelpScreen extends AppCompatActivity {
 
     @Override

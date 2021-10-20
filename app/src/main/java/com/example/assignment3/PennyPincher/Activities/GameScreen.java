@@ -8,14 +8,19 @@ import com.example.assignment3.GameModel.GameManager;
 import com.example.assignment3.GameModel.MoneyBag;
 import com.example.assignment3.R;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -40,6 +45,8 @@ public class GameScreen extends AppCompatActivity {
     private Integer scansUsed = 0;
     private Integer minesFound = 0;
     private GameManager gameManager;
+    private MediaPlayer pennySound;
+    private MediaPlayer shakeSound;
     MoneyBag[][] moneyBags;
 
 
@@ -48,6 +55,7 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        setUpSounds();
         addTimesPlayed();
         setUpBoardOptions();
         populateButtons();
@@ -55,7 +63,7 @@ public class GameScreen extends AppCompatActivity {
         setUpStartButton();
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n"})
     private void populateButtons() {
         TableLayout table = findViewById(R.id.tableLayout);
         TableRow.LayoutParams tableLayout = new TableRow.LayoutParams(
@@ -72,6 +80,9 @@ public class GameScreen extends AppCompatActivity {
 
             for (int col = 0; col < tableWidth; col++) {
                 Button button = new Button(this);
+
+                button.setTypeface(Typeface.create("sans-serif-bold", Typeface.NORMAL));
+                button.setTextSize(20);
                 button.setVisibility(View.INVISIBLE);
                 button.setLayoutParams(tableLayout);
                 tableRow.addView(button);
@@ -85,9 +96,11 @@ public class GameScreen extends AppCompatActivity {
                 int finalRow = row;
                 int finalCol = col;
                 button.setOnClickListener((v)-> {
+
                     int clickResult = gameManager.moneyBagClicked(finalRow, finalCol);
 
                     if (clickResult == HIDDEN_MINE_FOUND) {
+                        pennySound.start();
                         setScaledBackground(button, R.drawable.penny);
                         minesFound++;
                         minesFoundTV.setText(minesFound + " pennies found of " + numOfMines);
@@ -103,25 +116,65 @@ public class GameScreen extends AppCompatActivity {
                         }
                     }
                     else if (clickResult == MINE_USED_FOR_SCAN) {
+                        shakeSound.start();
                         scansUsed++;
                         scansUsedTV.setText(scansUsed + " scans used");
+                        shakeBagsInRowsCols(finalRow, finalCol);
 
                     }
                     else if (clickResult == BAG_USED_FOR_SCAN) {
+                        shakeSound.start();
                         scansUsed++;
                         scansUsedTV.setText(scansUsed + " scans used");
+                        shakeBagsInRowsCols(finalRow, finalCol);
                     }
                 });
             }
         }
     }
 
-    private void setScaledBackground(Button button, int drawable) {
+    /**
+     * Sets the given button's background to a locked size
+     * @param button Button to have background changed
+     * @param resource Resource id
+     */
+    private void setScaledBackground(Button button, int resource) {
         int width = button.getWidth();
         int height = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), drawable);
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), resource);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, width, height, true);
         button.setBackground(new BitmapDrawable(getResources(), scaledBitmap));
+    }
+
+    private void shakeBagsInRowsCols(int row, int col) {
+        for (int i = 0; i < tableHeight; i++) {
+            MoneyBag moneyBag = moneyBags[i][col];
+            if (!moneyBag.isClicked()) shakeBagAnimation(moneyBag.getButton());
+        }
+        for (int k = 0; k < tableWidth; k++) {
+            MoneyBag moneyBag = moneyBags[row][k];
+            if (!moneyBag.isClicked()) shakeBagAnimation(moneyBag.getButton());
+        }
+    }
+
+    /**
+     * Doing this animation with an xml does not work properly with the pennies for refreshing reasons
+     * This work-around animates the object programmatically
+     * @param button Button to be shook
+     */
+    private void shakeBagAnimation(Button button) {
+        button.animate()
+                .rotationXBy(0.5f)
+                .rotationYBy(0.5f)
+                .rotationBy(20)
+                .setDuration(300)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        button.animate().rotation(0);
+                    }
+                });
     }
 
     private void setUpStartButton() {
@@ -161,6 +214,11 @@ public class GameScreen extends AppCompatActivity {
 
     private void addInMines() {
         gameManager.addInMines();
+    }
+
+    private void setUpSounds() {
+        pennySound = MediaPlayer.create(getApplicationContext(), R.raw.penny_sound);
+        shakeSound = MediaPlayer.create(getApplicationContext(), R.raw.shorter_shake);
     }
 
     private void setUpBoardOptions() {

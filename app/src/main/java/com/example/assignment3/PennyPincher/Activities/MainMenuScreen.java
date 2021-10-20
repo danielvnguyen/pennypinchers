@@ -11,7 +11,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainMenu extends AppCompatActivity {
+/**
+ * Main menu activity that can navigate to the game/help/options
+ */
+public class MainMenuScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,6 @@ public class MainMenu extends AppCompatActivity {
      * @return The intent to start this activity
      */
     public static Intent makeIntent(Context context) {
-        return new Intent(context, MainMenu.class);
+        return new Intent(context, MainMenuScreen.class);
     }
 }

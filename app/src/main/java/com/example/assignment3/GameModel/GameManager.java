@@ -1,8 +1,12 @@
 package com.example.assignment3.GameModel;
 
 import android.annotation.SuppressLint;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.example.assignment3.PennyPincher.Activities.GameScreen;
 import com.example.assignment3.R;
 
 import java.util.ArrayList;
@@ -56,7 +60,7 @@ public class GameManager {
             return HIDDEN_MINE_FOUND;
         }
         //revealed penny clicked (trigger scan)
-        else if (moneyBags[row][col].isPenny() && moneyBags[row][col].isClicked()) {
+        else if (moneyBags[row][col].isPenny() && moneyBags[row][col].isClicked() && !moneyBags[row][col].isScan()) {
             moneyBags[row][col].setScan(true);
 
             updateRowValues();
@@ -67,10 +71,9 @@ public class GameManager {
         }
         //empty bag clicked (trigger scan)
         else if (!moneyBags[row][col].isPenny() && !moneyBags[row][col].isClicked()) {
-            moneyBags[row][col].getButton().setBackgroundResource(R.color.fadedWhite);
+            moneyBags[row][col].getButton().setBackgroundResource(R.color.transparent);
             moneyBags[row][col].setClicked(true);
             moneyBags[row][col].setScan(true);
-
             updateRowValues();
             updateColValues();
             int nearbyMines = rowValues[row] + colValues[col];

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment3"
-        >
+        android:fullBackupContent="">
 
         <activity
             android:name=".PennyPincher.Activities.GameScreen"
@@ -27,7 +27,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
         <activity
-            android:name=".PennyPincher.Activities.MainMenu"
+            android:name=".PennyPincher.Activities.MainMenuScreen"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true" />
