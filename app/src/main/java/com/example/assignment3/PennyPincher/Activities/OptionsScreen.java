@@ -37,7 +37,6 @@ public class OptionsScreen extends AppCompatActivity {
         setUpBoardSizeRadioButtons();
         setUpEraseTimesPlayedButton();
         setUpMinesRadioButtons();
-        setUpEraseHighScoresButton();
     }
 
     /**
@@ -131,14 +130,6 @@ public class OptionsScreen extends AppCompatActivity {
             TextView tvTimesPlayed = findViewById(R.id.tvTimesPlayed);
             setTimesPlayed(this, 0);
             tvTimesPlayed.setText("0");
-        });
-    }
-
-    private void setUpEraseHighScoresButton() {
-        Button btnEraseHighScore = findViewById(R.id.btnEraseHighScores);
-
-        btnEraseHighScore.setOnClickListener((v)-> {
-            Toast.makeText(this, "All High Scores Reset", Toast.LENGTH_SHORT).show();
         });
     }
 
