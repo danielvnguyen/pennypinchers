@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class WelcomeScreen extends AppCompatActivity {
 
         fadeInInterface();
         setUpSkipButton();
+        spinPenny();
 
         // Waits 4 seconds before ending the startMenu
         Handler loadingHandler = new Handler();
@@ -38,6 +40,12 @@ public class WelcomeScreen extends AppCompatActivity {
         Button btnSkip;
         btnSkip = findViewById(R.id.btnSkip);
         btnSkip.setOnClickListener((v)-> startMainMenu());
+    }
+
+    private void spinPenny() {
+        ImageView imgPenny = findViewById(R.id.imgPenny);
+        imgPenny.setAnimation(AnimationUtils.loadAnimation(this, R.anim.spin));
+        imgPenny.animate();
     }
 
     /** Starts the main menu activity */

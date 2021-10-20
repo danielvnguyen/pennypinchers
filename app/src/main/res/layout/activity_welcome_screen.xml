@@ -22,6 +22,18 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.25" />
 
+  <ImageView
+      android:id="@+id/imgPenny"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:layout_gravity="center"
+      android:contentDescription="@string/penny_for_spinning"
+      android:src="@drawable/penny"
+      app:layout_constraintBottom_toBottomOf="@+id/pbLoading"
+      app:layout_constraintEnd_toEndOf="@+id/pbLoading"
+      app:layout_constraintStart_toStartOf="@+id/pbLoading"
+      app:layout_constraintTop_toTopOf="@+id/pbLoading" />
+
   <TextView
       android:id="@+id/tvAuthors"
       android:layout_width="wrap_content"
